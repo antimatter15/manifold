@@ -26,7 +26,7 @@ export const SiteLink = (props: {
       {children}
     </a>
   ) : (
-    <Link href={href}>
+    <Link prefetch={false} href={href}>
       <a
         className={clsx(
           'z-10 break-words hover:underline hover:decoration-indigo-400 hover:decoration-2',
