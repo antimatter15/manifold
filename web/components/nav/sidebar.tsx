@@ -46,8 +46,16 @@ const signedOutNavigation = [
 const signedOutMobileNavigation = [
   { name: 'Charity', href: '/charity', icon: HeartIcon },
   { name: 'Leaderboards', href: '/leaderboards', icon: CakeIcon },
-  { name: 'Discord', href: 'https://discord.gg/eHQBNBqXuh', icon: IconFromUrl("/discord-logo.svg") },
-  { name: 'Twitter', href: 'https://twitter.com/ManifoldMarkets', icon: IconFromUrl("/twitter-logo.svg") },
+  {
+    name: 'Discord',
+    href: 'https://discord.gg/eHQBNBqXuh',
+    icon: IconFromUrl('/discord-logo.svg'),
+  },
+  {
+    name: 'Twitter',
+    href: 'https://twitter.com/ManifoldMarkets',
+    icon: IconFromUrl('/twitter-logo.svg'),
+  },
   { name: 'About', href: 'https://docs.manifold.markets', icon: BookOpenIcon },
 ]
 
@@ -65,7 +73,7 @@ type Item = {
 function SidebarItem(props: { item: Item; currentPage: string }) {
   const { item, currentPage } = props
   return (
-    <Link href={item.href} key={item.name}>
+    <Link prefetch={false} href={item.href} key={item.name}>
       <a
         className={clsx(
           item.href == currentPage
@@ -123,7 +131,7 @@ export default function Sidebar() {
 
       <div className="mb-2" style={{ minHeight: 80 }}>
         {user ? (
-          <Link href={`/${user.username}`}>
+          <Link prefetch={false} href={`/${user.username}`}>
             <a className="group">
               <ProfileSummary user={user} />
             </a>
@@ -183,7 +191,7 @@ export default function Sidebar() {
 
       {user && (
         <div className={'aligncenter flex justify-center'}>
-          <Link href={'/create'}>
+          <Link prefetch={false} href={'/create'}>
             <button className="btn btn-primary btn-md mt-4 capitalize">
               Create Market
             </button>
